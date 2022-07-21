@@ -1,16 +1,18 @@
 from django.conf import settings
 from django.contrib.auth import login, get_user_model
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
-from django.views.decorators.csrf import requires_csrf_token
+from django.views.decorators.csrf import requires_csrf_token, csrf_exempt
 from django.middleware.csrf import get_token
 from django.views.decorators.clickjacking import xframe_options_exempt
 
 @xframe_options_exempt
+@csrf_exempt
 def form(request):
     get_token(request)
     return render(request, 'pin_passcode/form.html')
 
 @xframe_options_exempt
+@csrf_exempt
 def auth(request):
     if request.method == 'POST':
         received_pin = request.POST.get('pin', None)
