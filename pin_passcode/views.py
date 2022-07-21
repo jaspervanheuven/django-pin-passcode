@@ -3,6 +3,7 @@ from django.contrib.auth import login, get_user_model
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import requires_csrf_token
 from django.middleware.csrf import get_token
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 @xframe_options_exempt
 @requires_csrf_token
