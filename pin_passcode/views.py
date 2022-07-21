@@ -4,13 +4,13 @@ from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import requires_csrf_token
 from django.middleware.csrf import get_token
 
-
+@xframe_options_exempt
 @requires_csrf_token
 def form(request):
     get_token(request)
     return render(request, 'pin_passcode/form.html')
 
-
+@xframe_options_exempt
 @requires_csrf_token
 def auth(request):
     if request.method == 'POST':
